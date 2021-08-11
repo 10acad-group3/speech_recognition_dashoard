@@ -74,7 +74,7 @@ def main():
                 st.text(txt)
 
         except Exception as e:
-            pass
+            logging.exception(f" Exception occured in loading audio file, {e}")
 
 
         st.write("""
@@ -93,7 +93,7 @@ def main():
                 st.error('Please, Upload the audio file')
 
         except Exception as e:
-            pass
+            logging.exception(f" Exception occured in uploading audio file, {e}")
 
     elif transaltion_mode == real_time_translation:
         pass
