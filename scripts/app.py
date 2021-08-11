@@ -110,7 +110,11 @@ def main():
             logging.exception(f" Exception occured in uploading audio file, {e}")
 
     elif transaltion_mode == real_time_translation:
-        pass
+        st.write("""
+        ### Real Time Amharic Speech Recognition
+         - This feature allows the user to get translations while talking.
+        """)
+        st.success('Comming Soon! Please Come back later')
 
 
 if __name__=='__main__': 
