@@ -37,9 +37,14 @@ st.write("""
 """)
 
 st.audio(path_to_wave_files)
+st.button('Translate')
+st.text_area('Hit Translate to get Amharic translations texts.. ')
 
 st.write("""
 ## Upload Amharic audio file
 """)
 
 file = st.file_uploader("Pick a file")
+st.button('Translate button')
+
+st.text_area('Hit Translate to get Amharic translations texts Amharic translations texts')
