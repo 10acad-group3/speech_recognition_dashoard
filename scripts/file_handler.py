@@ -2,8 +2,6 @@ import os
 import random
 from app import load_logging
 
-PATH_TEST_WAV = "../data/AMHARIC/test/wav/"
-
 
 class FileHandler():
   """Read audio, audio transcription, Save cleaned Audio and transcriptions
