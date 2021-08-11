@@ -17,6 +17,18 @@ import warnings
 # Import packages for logging
 import logging
 import logging.handlers
+import os
+
+# Logging function
+def load_logging():
+    handler = logging.handlers.WatchedFileHandler(
+    os.environ.get("LOGFILE", "./logs/dashboard.log"))
+    formatter = logging.Formatter(logging.BASIC_FORMAT)
+    handler.setFormatter(formatter)
+    root = logging.getLogger()
+    root.setLevel(os.environ.get("LOGLEVEL", "INFO"))
+    root.addHandler(handler)
+    logging.info("Testing Loggings") 
 
 path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/01_d501021.wav"
 MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
@@ -29,7 +41,7 @@ st.set_page_config(page_title="Dashboard | Amharic Speech Recognition ", layout=
 st.markdown("<h1 style='color:#0b4eab;font-size:36px;border-radius:10px;'>Dashboard | Amharic Speech Recognition </h1>", unsafe_allow_html=True)
 
 def main():
-    
+    load_logging()
     dynamic_range = st.sidebar.write("""
     ## Translate  Amharic Speech
     ### 
