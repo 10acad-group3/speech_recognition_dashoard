@@ -1,11 +1,9 @@
 # Importing packages
 import numpy as np
 import pandas as pd
-import altair as alt
-import plotly.express as px
+# import altair as alt
+# import plotly.express as px
 
-import altair as alt
-import plotly.express as px
 import pickle
 import math
 from file_handler import FileHandler
