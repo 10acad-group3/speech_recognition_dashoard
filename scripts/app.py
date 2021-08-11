@@ -8,6 +8,7 @@ import altair as alt
 import plotly.express as px
 import pickle
 import math
+from file_handler import FileHandler
 
 import streamlit as st
 
@@ -18,6 +19,11 @@ import warnings
 import logging
 import logging.handlers
 import os
+
+# Path to different Resources
+PATH_TEST_WAV = "../speech_recognition/data/AMHARIC/test/wav"
+path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/01_d501021.wav"
+MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
 
 # Logging function
 def load_logging():
@@ -30,8 +36,13 @@ def load_logging():
     root.addHandler(handler)
     logging.info("Testing Loggings") 
 
-path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/01_d501021.wav"
-MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
+
+def load_sample_speech(audio_files_path):
+    file_handler = FileHandler()
+    sample_test_wav = file_handler.read_data(audio_files_path)[10:15]
+
+    return sample_test_wav
+
 
 def tranlate_audio(path_audio_file):
     # Dummy function
@@ -72,6 +83,8 @@ def main():
                 # Function to translate
                 txt = tranlate_audio("path_audio_file")
                 st.text(txt)
+                samples = load_sample_speech(PATH_TEST_WAV)
+                st.text(samples)
 
         except Exception as e:
             logging.exception(f" Exception occured in loading audio file, {e}")
