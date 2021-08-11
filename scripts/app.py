@@ -8,6 +8,7 @@ import altair as alt
 import plotly.express as px
 import pickle
 import math
+from file_handler import FileHandler
 
 import streamlit as st
 
@@ -18,6 +19,11 @@ import warnings
 import logging
 import logging.handlers
 import os
+
+# Path to different Resources
+PATH_TEST_WAV = "../speech_recognition/data/AMHARIC/test/wav"
+path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/"
+MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
 
 # Logging function
 def load_logging():
@@ -30,8 +36,14 @@ def load_logging():
     root.addHandler(handler)
     logging.info("Testing Loggings") 
 
-path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/01_d501021.wav"
-MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
+
+def load_sample_speech(audio_files_path):
+    file_handler = FileHandler()
+    sample_test_wav = file_handler.read_data(audio_files_path)
+    sample_test_wav = [str(i)+".wav" for i in sample_test_wav]
+
+    return sample_test_wav
+
 
 def tranlate_audio(path_audio_file):
     # Dummy function
@@ -65,16 +77,18 @@ def main():
         st.write("""
         ### Select one of the following Amharic recorded Speech
         """)
-
         try:
-            st.audio(path_to_wave_files)
+            samples = load_sample_speech(PATH_TEST_WAV)
+            sample_audio = st.selectbox("Choose translation Mode", samples)
+            st.audio(path_to_wave_files+sample_audio)
             if st.button('Click Here to Translate'):
+
                 # Function to translate
+                
                 txt = tranlate_audio("path_audio_file")
                 st.text(txt)
-
         except Exception as e:
-            logging.exception(f" Exception occured in loading audio file, {e}")
+            logging.exception(f" Exception occured in loading sample audio file, {e}")
 
 
         st.write("""
