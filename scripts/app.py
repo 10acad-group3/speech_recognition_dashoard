@@ -26,16 +26,24 @@ st.markdown("<h1 style='color:#0b4eab;font-size:36px;border-radius:10px;'>Dashbo
 
 dynamic_range = st.sidebar.write("""
 ## Translate  Amharic Speech
-### Select below to Proceed
+### 
 """)
+
+default = "Home"
 load_file = "Load audio file"
 real_time_translation = "Real time Translate"
-app_mode = st.sidebar.selectbox("Choose the app mode", [load_file, real_time_translation])
+transaltion_mode = st.sidebar.selectbox("Choose translation Mode", [default, load_file, real_time_translation])
 
-# st.sidebar.button('Load audio file')
-# st.sidebar.button('Real time Translate')
+if transaltion_mode == default:
+    st.success('This demo is using Deep Learning Model to process and convert African language (Amharic) speech/voice to text format.')
+    st.write("""
+    #### To try it out,  
+    - Please load the sample Amharic speech/audio files provided,
+    - Upload your Amharic audio file, or
+    - Use this demo to record your Speech and translate it
+    """ )
 
-if app_mode == load_file:
+if transaltion_mode == load_file:
     st.write("""
     ## Select one of the following Amharic recorded Speech
     """)
@@ -52,3 +60,6 @@ if app_mode == load_file:
     st.button('Translate button')
 
     st.text_area('Hit Translate to get Amharic translations texts Amharic translations texts')
+
+elif transaltion_mode == real_time_translation:
+    pass
