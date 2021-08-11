@@ -26,25 +26,29 @@ st.markdown("<h1 style='color:#0b4eab;font-size:36px;border-radius:10px;'>Dashbo
 
 dynamic_range = st.sidebar.write("""
 ## Translate  Amharic Speech
-###
+### Select below to Proceed
 """)
+load_file = "Load audio file"
+real_time_translation = "Real time Translate"
+app_mode = st.sidebar.selectbox("Choose the app mode", [load_file, real_time_translation])
 
-st.sidebar.button('Load audio file')
-st.sidebar.button('Real time Translate')
+# st.sidebar.button('Load audio file')
+# st.sidebar.button('Real time Translate')
 
-st.write("""
-## Select one of the following Amharic recorded Speech
-""")
+if app_mode == load_file:
+    st.write("""
+    ## Select one of the following Amharic recorded Speech
+    """)
 
-st.audio(path_to_wave_files)
-st.button('Translate')
-st.text_area('Hit Translate to get Amharic translations texts.. ')
+    st.audio(path_to_wave_files)
+    st.button('Translate')
+    st.text_area('Hit Translate to get Amharic translations texts.. ')
 
-st.write("""
-## Upload Amharic audio file
-""")
+    st.write("""
+    ## Upload Amharic audio file
+    """)
 
-file = st.file_uploader("Pick a file")
-st.button('Translate button')
+    file = st.file_uploader("Pick a file")
+    st.button('Translate button')
 
-st.text_area('Hit Translate to get Amharic translations texts Amharic translations texts')
+    st.text_area('Hit Translate to get Amharic translations texts Amharic translations texts')
