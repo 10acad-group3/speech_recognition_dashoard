@@ -3,6 +3,7 @@ import numpy as np
 import pandas as pd
 # import altair as alt
 # import plotly.express as px
+import streamlit.components.v1 as components
 
 import pickle
 import math
@@ -26,17 +27,6 @@ path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/"
 # path_to_wave_files = "https://drive.google.com/drive/folders/12qZWqfwZ1sB0cD4Af_KVFJUkt39-QmsD?usp=sharing/"
 # "https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/view?usp=sharing"
 MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
-
-# # Logging function
-# def load_logging():
-#     handler = logging.handlers.WatchedFileHandler(
-#     os.environ.get("LOGFILE", "./logs/dashboard.log"))
-#     formatter = logging.Formatter(logging.BASIC_FORMAT)
-#     handler.setFormatter(formatter)
-#     root = logging.getLogger()
-#     root.setLevel(os.environ.get("LOGLEVEL", "INFO"))
-#     root.addHandler(handler)
-#     logging.info("Testing Loggings") 
 
 
 def load_sample_speech(audio_files_path):
@@ -83,6 +73,8 @@ def main():
             samples = load_sample_speech(PATH_TEST_WAV)
             sample_audio = st.selectbox("Choose translation Mode", samples)
             st.audio(path_to_wave_files+sample_audio)
+            # st.audio("https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/preview")
+            # components.iframe("https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/preview?usp=sharing")
             logging.info(f" Loading sample audio file successfully")
             if st.button('Click Here to Translate'):
 
