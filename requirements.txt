@@ -5,3 +5,4 @@ altair
 scipy
 streamlit
 setuptools
+tensorflow
