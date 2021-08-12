@@ -21,12 +21,9 @@ import logging.handlers
 import os
 
 # Path to different Resources
-PATH_TEST_WAV = "../speech_recognition/data/AMHARIC/test/wav"
-# PATH_TEST_WAV = "https://drive.google.com/drive/folders/12qZWqfwZ1sB0cD4Af_KVFJUkt39-QmsD?usp=sharing"
-path_to_wave_files = "../speech_recognition/data/AMHARIC/test/wav/"
-# path_to_wave_files = "https://drive.google.com/drive/folders/12qZWqfwZ1sB0cD4Af_KVFJUkt39-QmsD?usp=sharing/"
-# "https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/view?usp=sharing"
-MODEL_URL = "https://github.com/10acad-group3/speech_recognition/tree/main/models/model.pkl"
+PATH_TEST_WAV = "./data/AMHARIC/test/wav"
+path_to_wave_files = "./data/AMHARIC/test/wav/"
+MODEL_URL = "/models/model.pkl"
 
 
 def load_sample_speech(audio_files_path):
@@ -73,8 +70,6 @@ def main():
             samples = load_sample_speech(PATH_TEST_WAV)
             sample_audio = st.selectbox("Choose translation Mode", samples)
             st.audio(path_to_wave_files+sample_audio)
-            # st.audio("https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/preview")
-            # components.iframe("https://drive.google.com/file/d/143AC4PdLkj5ZWzSpPiWv8zJWxEL8Djpm/preview?usp=sharing")
             logging.info(f" Loading sample audio file successfully")
             if st.button('Click Here to Translate'):
 
@@ -114,3 +109,8 @@ def main():
 
 if __name__=='__main__': 
     main()
+
+
+# sudo docker container ls
+# sudo docker exec -it 4f604bc51340 bash
+# docker image ls
