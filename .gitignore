@@ -22,3 +22,4 @@ mlruns/
 /.dvc/tmp
 /.dvc/cache
 /models/resnet_v3.h5
+*.wav
