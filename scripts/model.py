@@ -25,8 +25,13 @@ from tensorflow.keras.preprocessing.text import Tokenizer
 from clean_audio import CleanAudio
 from log_melgram_layer import LogMelgramLayer
 
-def preprocessing_model(fft_size, hop_size, n_mels):
+sr = 8000
+fft_size = 256
+hop_size = 128
+n_mels = 128
 
+
+def preprocessing_model(fft_size, hop_size, n_mels):
     input_data = Input(name='input', shape=(None,), dtype="float32")
     spec = LogMelgramLayer(
         num_fft=fft_size,
@@ -173,5 +178,3 @@ def resnet(input_dim, output_dim=224, units=256,  num_birnn=2):
         x, kernels, pool_sizes, cnn_stride, mx_stride)
 
     return model, output_length_calculater
-
-
