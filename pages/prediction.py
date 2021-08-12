@@ -1,6 +1,7 @@
 import os
 import sys
-import streamlit as st
+import streamlit as st 
+import sounddevice as sd
 sys.path.append(os.path.abspath(os.path.join('./scripts')))
 from predict import Predict
 
