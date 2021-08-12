@@ -1,13 +1,14 @@
 import os
 import random
-from app import load_logging
+from logs import load_logging
 
 
 class FileHandler():
   """Read audio, audio transcription, Save cleaned Audio and transcriptions
   """
   def __init__(self):
-    self.logger = load_logging("FileHandler")
+    # self.logger = load_logging("FileHandler")
+    pass
 
 
   def read_data(self, PATH_TEST_WAV):
