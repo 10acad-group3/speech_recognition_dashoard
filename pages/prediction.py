@@ -19,14 +19,14 @@ def tranlate_audio(path_audio_file):
 
 def app():
     st.write(""" ### Upload Amharic audio file """)
-    pridict = Predict()
+    predict = Predict()
 
     try:
         file = st.file_uploader("Pick a file")
         if file != None:
             if st.button('Click Here to Translate your Audio'):
                 # Function to translate
-                txt = tranlate_audio("path_audio_file")
+                txt = predict.predict(file)
                 st.text(txt)
 
         else:

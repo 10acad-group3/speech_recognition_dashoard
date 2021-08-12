@@ -40,7 +40,7 @@ class Predict():
         melspecModel = preprocessing_model(fft_size, hop_size, n_mels)
         resnet_, calc = resnet(n_mels, 224, 512, 4)
         model = build_model(melspecModel, 224, resnet_, calc)
-        model.load_weights('./models/resnet_V2.h5')
+        model.load_weights('./models/resnet_v3.h5')
         return model
 
     def get_tokenizer(self):
