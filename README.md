@@ -4,6 +4,8 @@ In this project we are building a dasboard for our deep learning model that conv
 
 ## Table of Content
 - [Introduction](#introduction)
+- [Installation](#installation)
+- [Contributors](#contributors)
 
 ### Introduction
 The World Food Program wants to deploy an intelligent form that collects nutritional information of food bought and sold at markets in three different countries in Africa - Ethiopia and Kenya.  
@@ -17,7 +19,17 @@ The model has been built [here](https://github.com/10acad-group3/speech_recognit
 The dashboard will take in speech/voice of a person as input and give the text format of the speech as output.
 
 
-## Contributors
+### Installation
+
+To run this Dashboard;
+- Use requirements.txt file to install the dependencies and packages needed,
+- Install Docker in you system, and build docker image using Dockerfile in this repository
+- Install **```PortAudio library ```** if it is not available in your system, using **```sudo apt-get install libportaudio2 ```** or using **```sudo apt-get install libasound-dev```**
+- Run docker container
+
+
+
+### Contributors
 1. [Natnael Sisay](https://github.com/NatnaelSisay)
 2. [Elias Andualem](https://github.com/eandualem)
 3. [Ethani Caphace](https://github.com/Caphace-Ethan)
