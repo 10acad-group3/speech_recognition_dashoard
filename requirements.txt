@@ -6,3 +6,7 @@ scipy
 streamlit
 setuptools
 tensorflow
+sklearn
+wavio
+sounddevice
+librosa
