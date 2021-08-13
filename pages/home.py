@@ -3,6 +3,7 @@ import streamlit as st
 
 def app():
     # st.image('./img/rossman_store.jpeg')
+    st.success('This demo is using Deep Learning Model to process and convert African language (Amharic) speech/voice to text format.')
     st.write(
         """
         #### To try it out,  
