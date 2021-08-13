@@ -1,6 +1,7 @@
 import os
 import sys
 import wavio
+import numpy as np
 import streamlit as st
 import sounddevice as sd
 sys.path.append(os.path.abspath(os.path.join('./scripts')))
@@ -24,6 +25,11 @@ def record():
     wavio.write(path_myrecording, myrecording, fs, sampwidth=2)
     return myrecording
 
+
+def read_audio(file):
+    with open(file, "rb") as audio_file:
+        audio_bytes = audio_file.read()
+    return audio_bytes
 
 @st.cache
 def getPredictor():
@@ -49,11 +55,18 @@ def app():
 
         myrecording = record()
         sd.play(myrecording, fs)  # st
-        st.write("Result")
-        txt = predict.predict("./data/wav/temp.mp3")
-        st.text(txt + "nothing")
-
-        btn = st.button("Clear Output")
+        st.write(""" ### Transcription """)
+        audio_file = read_audio('./data/wav/temp.mp3')
+        st.audio(audio_file)
+        audio_file = predict.get_audio('./data/wav/temp.mp3')
+        clean_audio_file = predict.get_clean_audio(audio_file)
+        txt = predict.predict(clean_audio_file)
+        if(txt == ""):
+            st.text("Please speak louder")
+        else:
+            st.text(txt)
+        btn = st.button("Clear Output")    
         if btn:
             st.session_state.recording_state = False
             rerun()
+

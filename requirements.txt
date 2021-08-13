@@ -7,3 +7,4 @@ tensorflow==2.5.0
 wavio==0.0.4
 sounddevice==0.4.2
 SoundFile==0.10.3.post1
+watchdog==2.1.3
