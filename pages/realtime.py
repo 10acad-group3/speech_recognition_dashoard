@@ -1,8 +1,6 @@
 import os
 import sys
-import streamlit as st
 import tensorflow as tf
-from sklearn.preprocessing import StandardScaler
 
 import pickle
 import wavio

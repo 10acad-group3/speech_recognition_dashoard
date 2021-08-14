@@ -4,7 +4,6 @@ import pickle
 import librosa
 import warnings
 
-import plotly.express as px
 import matplotlib.pyplot as plt
 from IPython.display import Image
 import plotly.graph_objects as go
@@ -16,7 +15,6 @@ from tensorflow.keras import backend as K
 from tensorflow.keras.layers import *
 from clean_audio import CleanAudio
 from model import *
-import matplotlib.pyplot as plt
 import streamlit as st
 
 
