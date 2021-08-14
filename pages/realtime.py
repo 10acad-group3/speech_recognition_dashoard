@@ -43,7 +43,7 @@ def getPredictor():
 def app():
     st.write(""" ### Real Time Amharic Speech Recognition """)
     predict = getPredictor()
-
+    fs = 48000
     if 'recording_state' not in st.session_state:
         st.session_state.recording_state = False
 
@@ -73,14 +73,14 @@ def app():
             st.session_state.recording_state = False
             rerun()
 
-    if st.button(f"Click to Record"):
-        record_state = st.text("Recording...")
-        duration = 14  # seconds
-        fs = 48000
-        myrecording = record(duration, fs)
-        # myrecording = ""
-        record_state.text(f"Transcribing...")
-        path_myrecording = f"./data/wav/temp.mp3"
-        save_record(path_myrecording, myrecording, fs)
-        txt = predict.predict("./data/wav/temp.mp3")
-        st.text(txt + "nothing")
+    # if st.button(f"Click to Record"):
+    #     record_state = st.text("Recording...")
+    #     duration = 14  # seconds
+    #     fs = 48000
+    #     myrecording = record()
+    #     # myrecording = ""
+    #     record_state.text(f"Transcribing...")
+    #     path_myrecording = f"./data/wav/temp.mp3"
+    #     # save_record(path_myrecording, myrecording, fs)
+    #     txt = predict.predict("./data/wav/temp.mp3")
+    #     st.text(txt + "nothing")
