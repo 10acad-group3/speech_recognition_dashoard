@@ -1,7 +1,6 @@
 import os
 import sys
 import pickle
-
 import librosa
 import warnings
 
@@ -15,11 +14,10 @@ from sklearn.utils import shuffle
 import tensorflow as tf
 from tensorflow.keras import backend as K
 from tensorflow.keras.layers import *
-from tensorflow.keras.models import Model, Sequential
-from tensorflow.keras.preprocessing.text import Tokenizer
 from clean_audio import CleanAudio
-from log_melgram_layer import LogMelgramLayer
 from model import *
+import matplotlib.pyplot as plt
+import streamlit as st
 
 
 class Predict():
@@ -44,14 +42,19 @@ class Predict():
 
         return tokenizer
 
-    def predict(self, audio_file):
+    def get_audio(self, audio_file):
         sr = 8000
         wav, rate = librosa.load(audio_file, sr=None)
         y = librosa.resample(wav, rate, sr)
-        y = self.clean_audio.normalize_audio(y)
-        y = self.clean_audio.split_audio(y, 30)
-        y = y.reshape(1, -1)
+        return y
 
+    def get_clean_audio(self, wav):
+        y = self.clean_audio.normalize_audio(wav)
+        y = self.clean_audio.split_audio(y, 30)
+        return y
+
+    def predict(self, audio_signal):
+        y = audio_signal.reshape(1, -1)
         y_pred = self.model.predict(y)
 
         input_shape = tf.keras.backend.shape(y_pred)
@@ -64,3 +67,18 @@ class Predict():
         pred = list(filter(lambda a: a != -1, pred))
 
         return ''.join(self.tokenizer.tokens_to_string(pred))
+
+    def get_spec(self, audio_signal):
+        fft_size = 256
+        hop_size = 128
+        n_mels = 128
+        melspecModel = preprocessing_model(fft_size, hop_size, n_mels)
+        y = audio_signal.reshape(1, -1)
+        y_pred = melspecModel.predict(y)
+        pred = y_pred[0, :, :, 0]
+        fig = plt.figure(figsize=(25, 5))
+        librosa.display.specshow(
+            pred.T, sr=sr, hop_length=hop_size, cmap="jet")
+        plt.title("MelSpectrogram for the given signal")
+        st.pyplot(fig)
+        
