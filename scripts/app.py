@@ -9,8 +9,6 @@ from file_handler import FileHandler
 from logs import load_logging
 
 import streamlit as st
-
-# Setting Logs
 import warnings
 
 # Import packages for logging

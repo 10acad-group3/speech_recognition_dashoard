@@ -2,11 +2,8 @@ import os
 import sys
 import streamlit as st
 import tensorflow as tf
-# import pandas as pd
 from sklearn.preprocessing import StandardScaler
-# import matplotlib.pyplot as plt
-# import seaborn as sns
-# import numpy as np
+
 import pickle
 import wavio
 import sounddevice as sd

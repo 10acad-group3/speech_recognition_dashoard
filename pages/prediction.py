@@ -4,7 +4,6 @@ import streamlit as st
 import tensorflow as tf
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-# import matplotlib.pyplot as plt
 
 sys.path.append(os.path.abspath(os.path.join('./scripts')))
 from predict import Predict
