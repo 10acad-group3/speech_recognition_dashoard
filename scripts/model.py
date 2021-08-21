@@ -1,21 +1,8 @@
 import os
 import sys
-import cv2
 import pickle
 
-import librosa
 import warnings
-import numpy as np
-import pandas as pd
-import seaborn as sns
-import plotly.io as pio
-
-import plotly.express as px
-import matplotlib.pyplot as plt
-from IPython.display import Image
-import plotly.graph_objects as go
-from keras.utils.vis_utils import plot_model
-from sklearn.utils import shuffle
 
 import tensorflow as tf
 from tensorflow.keras import backend as K
@@ -46,7 +33,6 @@ def preprocessing_model(fft_size, hop_size, n_mels):
     model = Model(inputs=input_data, outputs=x, name="preprocessin_model")
 
     return model
-
 
 def ctc_lambda_func(args):
     y_pred, labels, input_length, label_length = args
